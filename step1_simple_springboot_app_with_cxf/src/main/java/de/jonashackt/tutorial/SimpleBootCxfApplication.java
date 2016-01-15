@@ -11,17 +11,17 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SimpleBootCxfApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SimpleBootCxfApplication.class, args);
-	}
-	
-	@Bean
+    public static void main(String[] args) {
+        SpringApplication.run(SimpleBootCxfApplication.class, args);
+    }
+
+    @Bean
     public ServletRegistrationBean dispatcherServlet() {
         return new ServletRegistrationBean(new CXFServlet(), "/soap-api/*");
     }
-    
-    @Bean(name=Bus.DEFAULT_BUS_ID)
-    public SpringBus springBus() {      
+
+    @Bean(name = Bus.DEFAULT_BUS_ID)
+    public SpringBus springBus() {
         return new SpringBus();
     }
 }
