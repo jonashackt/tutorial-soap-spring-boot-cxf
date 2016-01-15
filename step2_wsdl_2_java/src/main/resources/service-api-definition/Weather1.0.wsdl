@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema"
+				  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+				  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+				  xmlns:weather="http://www.codecentric.de/namespace/weatherservice/"
+				  xmlns:general="http://www.codecentric.de/namespace/weatherservice/general"
+				  xmlns:exception="http://www.codecentric.de/namespace/weatherservice/exception"
+				  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+				  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+				  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+				  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+				  targetNamespace="http://www.codecentric.de/namespace/weatherservice/"
+				  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema xmlns="http://www.w3.org/2001/XMLSchema"
+              xmlns:s="http://www.w3.org/2001/XMLSchema"
+              targetNamespace="http://www.codecentric.de/namespace/weatherservice/"
+              attributeFormDefault="qualified"
+              elementFormDefault="qualified">
+       <s:include schemaLocation="Weather1.0.xsd"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetWeatherInformationIn">
+    <wsdl:part name="parameters" element="general:GetWeatherInformation"/>
+  </wsdl:message>
+  <wsdl:message name="GetWeatherInformationOut">
+    <wsdl:part name="parameters" element="general:GetWeatherInformationResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCityForecastByZIPIn">
+    <wsdl:part name="parameters" element="general:GetCityForecastByZIP"/>
+  </wsdl:message>
+  <wsdl:message name="GetCityForecastByZIPOut">
+    <wsdl:part name="parameters" element="general:GetCityForecastByZIPResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCityWeatherByZIPIn">
+    <wsdl:part name="parameters" element="general:GetCityWeatherByZIP"/>
+  </wsdl:message>
+  <wsdl:message name="GetCityWeatherByZIPOut">
+    <wsdl:part name="parameters" element="general:GetCityWeatherByZIPResponse"/>
+  </wsdl:message>
+  <wsdl:message name="WeatherException">
+  	<wsdl:part name="parameters" element="exception:WeatherException" />
+  </wsdl:message>
+  <wsdl:portType name="WeatherService">
+    <wsdl:operation name="GetWeatherInformation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets Information for each WeatherID</wsdl:documentation>
+      <wsdl:input message="weather:GetWeatherInformationIn"/>
+      <wsdl:output message="weather:GetWeatherInformationOut"/>
+      <wsdl:fault name="WeatherException" message="weather:WeatherException"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityForecastByZIP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Allows you to get your City Forecast Over the Next 7 Days, which is updated hourly.</wsdl:documentation>
+      <wsdl:input message="weather:GetCityForecastByZIPIn"/>
+      <wsdl:output message="weather:GetCityForecastByZIPOut"/>
+      <wsdl:fault name="WeatherException" message="weather:WeatherException"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityWeatherByZIP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Allows you to get your City's Weather, which is updated hourly.</wsdl:documentation>
+      <wsdl:input message="weather:GetCityWeatherByZIPIn"/>
+      <wsdl:output message="weather:GetCityWeatherByZIPOut"/>
+      <wsdl:fault name="WeatherException" message="weather:WeatherException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WeatherService" type="weather:WeatherService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetWeatherInformation">
+      <soap:operation soapAction="http://www.codecentric.de/namespace/weatherservice/GetWeatherInformation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WeatherException">
+      	<soap:fault name="WeatherException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityForecastByZIP">
+      <soap:operation soapAction="http://www.codecentric.de/namespace/weatherservice/GetCityForecastByZIP" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+       <wsdl:fault name="WeatherException">
+      	<soap:fault name="WeatherException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityWeatherByZIP">
+      <soap:operation soapAction="http://www.codecentric.de/namespace/weatherservice/GetCityWeatherByZIP" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+       <wsdl:fault name="WeatherException">
+      	<soap:fault name="WeatherException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Weather">
+    <wsdl:port name="WeatherService" binding="weather:WeatherService">
+      <soap:address location="http://localhost:8095/soap-api/WeatherSoapService_1.0"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

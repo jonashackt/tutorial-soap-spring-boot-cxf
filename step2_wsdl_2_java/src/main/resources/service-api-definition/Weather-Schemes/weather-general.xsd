@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s:schema xmlns:s="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.codecentric.de/namespace/weatherservice/general"
+          xmlns:datatypes="http://www.codecentric.de/namespace/weatherservice/datatypes"
+          xmlns:general="http://www.codecentric.de/namespace/weatherservice/general"
+          targetNamespace="http://www.codecentric.de/namespace/weatherservice/general"
+          elementFormDefault="qualified"
+          version="1.0">
+      
+      <s:import namespace="http://www.codecentric.de/namespace/weatherservice/datatypes"
+                schemaLocation="weather-datatypes.xsd"/>
+      
+      <s:element name="GetWeatherInformation">
+        <s:complexType>
+        	<s:sequence>
+	          <s:element minOccurs="0" maxOccurs="1" name="ZIP" type="s:string"/>
+	        </s:sequence>
+	    </s:complexType>
+      </s:element>
+      
+      <s:element name="GetWeatherInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWeatherInformationResult" type="general:WeatherInformationReturn"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      
+      <s:complexType name="WeatherInformationReturn">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseText" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="WeatherOverviewPdf" type="datatypes:WeatherOverviewPdf"/>
+        </s:sequence>
+      </s:complexType>
+      
+      <s:element name="GetCityForecastByZIP">
+        <s:complexType>
+          <s:sequence>
+          	<s:element minOccurs="0" maxOccurs="1" name="ForecastRequest" type="general:ForecastRequest"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      
+      <s:element name="GetCityForecastByZIPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCityForecastByZIPResult" type="general:ForecastReturn"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      
+      <s:complexType name="ForecastRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ZIP" type="s:string"/>
+          <s:element name="flagcolor" type="s:string"/>
+          <s:element name="productName" type="datatypes:ProductName" />
+		  <s:element name="ForecastCustomer" type="general:ForecastCustomer"/>
+        </s:sequence>
+      </s:complexType>
+      
+
+	  <s:complexType name="ForecastCustomer">
+	    <s:sequence>
+	      <s:element name="Age" type="s:int"/>
+	      <s:element name="Contribution" type="s:int"/>
+	      <s:element name="MethodOfPayment" type="s:string"/>
+	    </s:sequence>
+	  </s:complexType>
+
+      
+      <s:complexType name="ForecastReturn">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseText" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="WeatherStationCity" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ForecastResult" type="datatypes:ArrayOfForecast"/>
+        </s:sequence>
+      </s:complexType>
+      
+      <s:element name="GetCityWeatherByZIP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ForecastRequest" type="general:ForecastRequest"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      
+      <s:element name="GetCityWeatherByZIPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCityWeatherByZIPResult" type="general:WeatherReturn"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      
+      <s:complexType name="WeatherReturn">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseText" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="WeatherStationCity" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="WeatherID" type="s:short"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Temperature" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RelativeHumidity" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Wind" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Pressure" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Visibility" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="WindChill" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      
+      <s:element name="ForecastReturn" nillable="true" type="general:ForecastReturn"/>
+      
+      <s:element name="WeatherReturn" type="general:WeatherReturn"/>
+      
+</s:schema>
