@@ -1,4 +1,4 @@
-# training-soap-spring-boot-cxf
+# tutorial-soap-spring-boot-cxf
 Tutorial how to create, test, deploy, monitor SOAP-Webservices using Spring Boot and Apache CXF
 
 ### The Steps
@@ -8,9 +8,13 @@ Shows you, how to set up a simple Spring Boot Application and bootstrap a runnab
 
 [step2_wsdl_2_java_maven](https://github.com/jonashackt/tutorial-soap-spring-boot-cxf/tree/master/step2_wsdl_2_java_maven)
 
-Inherits a completely altered example-WebService-Definition as WSDL inspired from the popular http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL
+Inherits a completely altered example WebService-Definition as WSDL inspired from the popular http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL
 
 Shows, how to generate JAXB-Classes from WSDL with JAX-WS Commons Maven plugin at build time - just run 
 ```
 mvn clean generate-sources
 ```
+
+[step3_jaxws-endpoint-cxf-spring-boot](https://github.com/jonashackt/tutorial-soap-spring-boot-cxf/tree/master/step3_jaxws-endpoint-cxf-spring-boot)
+
+First running SOAP-Endpoint with SpringBoot, CXF and JAX-WS. For testing use [SoapUI](https://www.soapui.org/) (Testing our Service inside a Unittest will be part of a further Step).
