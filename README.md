@@ -1,5 +1,5 @@
 # tutorial-soap-spring-boot-cxf
-Tutorial how to create, test, deploy, monitor SOAP-Webservices using Spring Boot and Apache CXF
+Tutorial how to create, test, deploy, monitor SOAP-Webservices using [Spring Boot](http://projects.spring.io/spring-boot/), [Apache CXF](https://cxf.apache.org/) and [JAX-WS](https://de.wikipedia.org/wiki/Java_API_for_XML_Web_Services)
 
 ### The Steps
 [step1_simple_springboot_app_with_cxf](https://github.com/jonashackt/tutorial-soap-spring-boot-cxf/tree/master/step1_simple_springboot_app_with_cxf)
