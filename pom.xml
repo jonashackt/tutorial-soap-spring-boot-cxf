@@ -12,6 +12,7 @@
 		<module>step1_simple_springboot_app_with_cxf</module>
 		<module>step2_wsdl_2_java_maven</module>
 		<module>step3_jaxws-endpoint-cxf-spring-boot</module>
+		<module>step3_jaxws-endpoint-cxf-spring-boot-orig-wsdl</module>
 	</modules>
 
 </project>
