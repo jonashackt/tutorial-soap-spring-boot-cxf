@@ -10,6 +10,7 @@ import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import de.codecentric.namespace.weatherservice.Weather;
 import de.codecentric.namespace.weatherservice.WeatherService;
 import de.jonashackt.tutorial.endpoint.WeatherServiceEndpoint;
 
@@ -33,9 +34,20 @@ public class WebServiceConfiguration {
     
     @Bean
     public Endpoint endpoint() {
-        EndpointImpl endpoint = new EndpointImpl(springBus(), weatherService());
+        EndpointImpl endpoint = new EndpointImpl(springBus(), weatherService());        
+        // CXF JAX-WS implementation relies on the correct ServiceName as QName-Object with
+        // the name-Attribute´s text <wsdl:service name="Weather"> and the targetNamespace
+        // "http://www.codecentric.de/namespace/weatherservice/"
+        // Also the WSDLLocation must be set
+        endpoint.setServiceName(weather().getServiceName());
+        endpoint.setWsdlLocation(weather().getWSDLDocumentLocation().toString());
         endpoint.publish("/WeatherSoapService_1.0");
-        endpoint.setWsdlLocation("Weather1.0.wsdl");
         return endpoint;
+    }
+    
+    @Bean
+    public Weather weather() {
+        // Needed for correct ServiceName & WSDLLocation to publish contract first incl. original WSDL
+        return new Weather();
     }
 }
