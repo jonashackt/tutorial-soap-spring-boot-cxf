@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.jonashackt.tutorial</groupId>
-	<artifactId>step4_unittest</artifactId>
+	<artifactId>step4_test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
