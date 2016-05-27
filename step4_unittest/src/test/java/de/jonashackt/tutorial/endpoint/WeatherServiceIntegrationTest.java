@@ -27,8 +27,8 @@ public class WeatherServiceIntegrationTest {
     public void getCityForecastByZIP() throws WeatherException {
         // Given
         ForecastRequest forecastRequest = generateDummyRequest();
-        // When
         
+        // When
         ForecastReturn forecastReturn = weatherServiceIntegrationTestClient.getCityForecastByZIP(forecastRequest);
         
         // Then

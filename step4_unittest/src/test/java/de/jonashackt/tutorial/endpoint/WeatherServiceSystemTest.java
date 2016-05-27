@@ -7,20 +7,23 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import de.codecentric.namespace.weatherservice.WeatherException;
+import de.codecentric.namespace.weatherservice.WeatherService;
 import de.codecentric.namespace.weatherservice.general.ForecastRequest;
 import de.codecentric.namespace.weatherservice.general.ForecastReturn;
-import de.jonashackt.tutorial.ApplicationTestConfiguration;
+import de.jonashackt.tutorial.SimpleBootCxfSystemTestApplication;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes=ApplicationTestConfiguration.class)
-public class WeatherServiceTest {
+@SpringApplicationConfiguration(classes=SimpleBootCxfSystemTestApplication.class)
+@WebIntegrationTest("server.port:8090")
+public class WeatherServiceSystemTest {
 
     @Autowired
-    private WeatherServiceEndpoint weatherServiceEndpoint;
+    private WeatherService weatherServiceSystemTestClient;
     
     @Test
     public void getCityForecastByZIP() throws WeatherException {
@@ -28,7 +31,7 @@ public class WeatherServiceTest {
         ForecastRequest forecastRequest = generateDummyRequest();
         
         // When
-        ForecastReturn forecastReturn = weatherServiceEndpoint.getCityForecastByZIP(forecastRequest);
+        ForecastReturn forecastReturn = weatherServiceSystemTestClient.getCityForecastByZIP(forecastRequest);
         
         // Then
         assertNotNull(forecastReturn);

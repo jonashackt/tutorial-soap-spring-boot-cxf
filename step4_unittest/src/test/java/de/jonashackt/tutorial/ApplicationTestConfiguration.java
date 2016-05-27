@@ -8,7 +8,6 @@ import de.codecentric.namespace.weatherservice.WeatherService;
 import de.jonashackt.tutorial.configuration.ApplicationConfiguration;
 import de.jonashackt.tutorial.endpoint.WeatherServiceEndpoint;
 
-
 @Configuration
 @Import(ApplicationConfiguration.class)
 public class ApplicationTestConfiguration {
