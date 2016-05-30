@@ -1,4 +1,4 @@
-package de.jonashackt.tutorial;
+package de.jonashackt.tutorial.utils;
 
 import de.codecentric.namespace.weatherservice.datatypes.ProductName;
 import de.codecentric.namespace.weatherservice.general.ForecastCustomer;

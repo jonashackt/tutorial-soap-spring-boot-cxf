@@ -1,6 +1,6 @@
 package de.jonashackt.tutorial.endpoint;
 
-import static de.jonashackt.tutorial.TestHelper.generateDummyRequest;
+import static de.jonashackt.tutorial.utils.TestHelper.generateDummyRequest;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gen="http://www.codecentric.de/namespace/weatherservice/general">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gen:GetCityForecastByZIP>
+         <gen:ForecastRequest>
+            <gen:ZIP>99425</gen:ZIP>
+            <gen:flagcolor>bluewhite</gen:flagcolor>
+            <gen:productName>ForecastBasic</gen:productName>
+            <gen:ForecastCustomer>
+				<gen:Age>30</gen:Age>
+				<gen:Contribution>5000</gen:Contribution>
+				<gen:MethodOfPayment>Paypal</gen:MethodOfPayment>
+            </gen:ForecastCustomer>
+         </gen:ForecastRequest>
+      </gen:GetCityForecastByZIP>
+   </soapenv:Body>
+</soapenv:Envelope>

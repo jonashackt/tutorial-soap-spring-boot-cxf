@@ -23,3 +23,7 @@ First running SOAP-Endpoint with SpringBoot, CXF and JAX-WS. For testing use [So
 [step3_jaxws-endpoint-cxf-spring-boot-orig-wsdl](https://github.com/jonashackt/tutorial-soap-spring-boot-cxf/tree/master/step3_jaxws-endpoint-cxf-spring-boot-orig-wsdl)
 
 Full-Contract-First with using the generated JAX-WS Service-Class to not wrap WSDL and use original one - includes correct URL and TargetNamespace (recommended)
+
+[step4_test](https://github.com/jonashackt/tutorial-soap-spring-boot-cxf/tree/master/step4_test)
+
+Unit-, Integration- and Single-System-Integration-Tests with Spring (Boot) and Apache CXF
