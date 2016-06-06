@@ -1,8 +1,0 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gen="http://www.codecentric.de/namespace/weatherservice/general">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <gen:GetWeatherInformation>
-      	<gen:ZIP>99425</gen:ZIP>
-      </gen:GetWeatherInformation>
-   </soapenv:Body>
-</soapenv:Envelope>
