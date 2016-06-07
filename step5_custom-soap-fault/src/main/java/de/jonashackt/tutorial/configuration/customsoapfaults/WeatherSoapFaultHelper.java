@@ -6,9 +6,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import de.jonashackt.tutorial.common.FaultConst;
+import de.jonashackt.tutorial.common.XmlUtils;
 import de.jonashackt.tutorial.logging.SoapFrameworkLogger;
 import de.jonashackt.tutorial.transformation.WeatherOutError;
-import de.jonashackt.tutorial.utils.XmlUtils;
 
 public final class WeatherSoapFaultHelper {
 

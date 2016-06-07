@@ -1,4 +1,4 @@
-package de.jonashackt.tutorial.utils;
+package de.jonashackt.tutorial.common;
 
 import java.io.InputStream;
 import java.io.StringReader;

@@ -17,7 +17,6 @@ public class SoapFrameworkLogger {
 		return frameworkLogger;
 	}	
 	
-	
 	/*
 	 * Errors - 9xx
 	 */
@@ -34,9 +33,6 @@ public class SoapFrameworkLogger {
 	}
 	
 
-
-	
-	
 	/*
 	 * Logger-Methods - only private, to use just inside this class
 	 */

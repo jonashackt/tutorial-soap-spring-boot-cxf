@@ -19,8 +19,8 @@ import de.codecentric.namespace.weatherservice.WeatherService;
 import de.codecentric.namespace.weatherservice.general.ForecastReturn;
 import de.codecentric.namespace.weatherservice.general.GetCityForecastByZIP;
 import de.jonashackt.tutorial.SimpleBootCxfSystemTestApplication;
-import de.jonashackt.tutorial.utils.XmlUtilsException;
-import de.jonashackt.tutorial.utils.XmlUtils;
+import de.jonashackt.tutorial.common.XmlUtils;
+import de.jonashackt.tutorial.common.XmlUtilsException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes=SimpleBootCxfSystemTestApplication.class)

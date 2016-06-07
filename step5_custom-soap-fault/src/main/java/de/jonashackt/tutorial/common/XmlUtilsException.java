@@ -1,4 +1,4 @@
-package de.jonashackt.tutorial.utils;
+package de.jonashackt.tutorial.common;
 
 public class XmlUtilsException extends Exception {
 	private static final long serialVersionUID = 1L;
