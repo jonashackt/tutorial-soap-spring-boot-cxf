@@ -13,7 +13,8 @@
 		<module>step2_wsdl_2_java_maven</module>
 		<module>step3_jaxws-endpoint-cxf-spring-boot</module>
 		<module>step3_jaxws-endpoint-cxf-spring-boot-orig-wsdl</module>
-		<module>step3_test</module>
+		<module>step4_test</module>
+		<module>step5_custom-soap-fault</module>
 	</modules>
 
 </project>

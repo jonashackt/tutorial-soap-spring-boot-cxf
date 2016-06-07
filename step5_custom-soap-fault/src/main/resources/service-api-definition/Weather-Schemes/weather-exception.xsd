@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s:schema xmlns:s="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.codecentric.de/namespace/weatherservice/exception"
+          xmlns:exception="http://www.codecentric.de/namespace/weatherservice/exception"
+          targetNamespace="http://www.codecentric.de/namespace/weatherservice/exception"
+          elementFormDefault="qualified"
+          version="1.0">
+      
+      <s:element name="WeatherException">
+      	<s:complexType>
+	        <s:sequence>
+	          <s:element name="Uuid" type="s:string"/>
+	          <s:element name="timestamp" type="s:dateTime"/>
+	          <s:element name="businessErrorId" type="s:string"/>
+	          <s:element name="bigBusinessErrorCausingMoneyLoss" type="s:boolean"/>
+	          <s:element name="exceptionDetails" type="s:string"/>
+	        </s:sequence>
+	      </s:complexType>
+      </s:element>
+</s:schema>
