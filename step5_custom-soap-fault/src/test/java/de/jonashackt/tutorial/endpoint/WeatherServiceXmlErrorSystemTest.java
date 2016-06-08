@@ -62,21 +62,17 @@ public class WeatherServiceXmlErrorSystemTest {
 	
 	@Test
 	public void xmlErrorNotXmlSchemeCompliantUnderRootElementTest() throws InternalBusinessException, IOException {
-		checkXMLErrorNotSchemeCompliant(xmlErrorNotXmlSchemeCompliantUnderRootElementTestXml);
+		checkXmlError(xmlErrorNotXmlSchemeCompliantUnderRootElementTestXml, FaultConst.SCHEME_VALIDATION_ERROR);
 	}
 	
 	@Test
 	public void xmlErrorNotXmlSchemeCompliantRootElementTest() throws InternalBusinessException, IOException {
-		checkXMLErrorNotSchemeCompliant(xmlErrorNotXmlSchemeCompliantRootElementTestXml);
+		checkXmlError(xmlErrorNotXmlSchemeCompliantRootElementTestXml, FaultConst.SCHEME_VALIDATION_ERROR);
 	}
 	
 	@Test
 	public void xmlErrorSoapHeaderMissingSlash() throws InternalBusinessException, IOException {
-		checkXMLErrorNotSchemeCompliant(xmlErrorSoapHeaderMissingSlashXml);
-	}
-	
-	private void checkXMLErrorNotSchemeCompliant(Resource testFile) throws InternalBusinessException, IOException {
-		checkXMLError(testFile, FaultConst.SCHEME_VALIDATION_ERROR);
+		checkXmlError(xmlErrorSoapHeaderMissingSlashXml, FaultConst.SCHEME_VALIDATION_ERROR);
 	}	
 	
 	/*
@@ -85,35 +81,31 @@ public class WeatherServiceXmlErrorSystemTest {
 	
 	@Test
 	public void xmlErrorSoapBodyTagMissingBracketTest() throws InternalBusinessException, IOException {
-		checkXMLErrorSyntacticallyIncorrect(xmlErrorSoapBodyTagMissingBracketTestXml);
+		checkXmlError(xmlErrorSoapBodyTagMissingBracketTestXml, FaultConst.SYNTACTICALLY_INCORRECT_XML_ERROR);
 	}
 	
 	@Test
 	public void xmlErrorSoapHeaderTagMissingBracketTest() throws InternalBusinessException, IOException {
-		checkXMLErrorSyntacticallyIncorrect(xmlErrorSoapHeaderTagMissingBracketTestXml);
+		checkXmlError(xmlErrorSoapHeaderTagMissingBracketTestXml, FaultConst.SYNTACTICALLY_INCORRECT_XML_ERROR);
 	}
 	
 	@Test
 	public void xmlErrorSoapEnvelopeTagMissingBracketTest() throws InternalBusinessException, IOException {
-		checkXMLErrorSyntacticallyIncorrect(xmlErrorSoapEnvelopeTagMissingBracketTestXml);
+		checkXmlError(xmlErrorSoapEnvelopeTagMissingBracketTestXml, FaultConst.SYNTACTICALLY_INCORRECT_XML_ERROR);
 	}
 	
 	@Test
 	public void xmlErrorXMLHeaderDefinitionMissingBracket() throws InternalBusinessException, IOException {
-		checkXMLErrorSyntacticallyIncorrect(xmlErrorXMLHeaderDefinitionMissingBracketXml);
+		checkXmlError(xmlErrorXMLHeaderDefinitionMissingBracketXml, FaultConst.SYNTACTICALLY_INCORRECT_XML_ERROR);
 	}	
 	
 	@Test
 	public void xmlErrorXMLTagNotClosedInsideBodyTest() throws InternalBusinessException, IOException {
-		checkXMLErrorSyntacticallyIncorrect(xmlErrorXMLTagNotClosedInsideBodyTestXml);
+		checkXmlError(xmlErrorXMLTagNotClosedInsideBodyTestXml, FaultConst.SYNTACTICALLY_INCORRECT_XML_ERROR);
 	}
 	
 	
-	private void checkXMLErrorSyntacticallyIncorrect(Resource testFile) throws InternalBusinessException, IOException {
-		checkXMLError(testFile, FaultConst.SYNTACTICALLY_INCORRECT_XML_ERROR);
-	}
-	
-	private void checkXMLError(Resource testFile, FaultConst faultContent) throws InternalBusinessException, IOException {
+	private void checkXmlError(Resource testFile, FaultConst faultContent) throws InternalBusinessException, IOException {
 		// When
 		SoapRawClientResponse soapRawResponse = soapRawClient.callSoapService(testFile.getInputStream());
 		
