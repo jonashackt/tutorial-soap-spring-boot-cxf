@@ -29,13 +29,13 @@ public final class XmlUtils {
 	// private Constructor for Utility-Class
 	private XmlUtils() {};
 	
-	public static <T> T readSoapMessageFromStreamAndUnmarshallBody2Object(InputStream fileStream, Class<T> jaxbClass) throws XmlUtilsException {
+	public static <T> T readSoapMessageFromStreamAndUnmarshallBody2Object(InputStream fileStream, Class<T> jaxbClass) throws InternalBusinessException {
 		T unmarshalledObject = null;
 		try {
 			Document soapMessage = parseFileStream2Document(fileStream);
 			unmarshalledObject = getUnmarshalledObjectFromSoapMessage(soapMessage, jaxbClass);			
 		} catch (Exception exception) {
-			throw new XmlUtilsException("Problem beim unmarshalling des JAXBObjects " + jaxbClass.getSimpleName() + " aus der SoapMessage.", exception);
+			throw new InternalBusinessException("Problem beim unmarshalling des JAXBObjects " + jaxbClass.getSimpleName() + " aus der SoapMessage.", exception);
 		}			
 		return unmarshalledObject;
 	}
@@ -44,7 +44,7 @@ public final class XmlUtils {
 		return JAXB.unmarshal(new StringReader(xml), jaxbClass);
 	}	
 	
-	public static <T> T getUnmarshalledObjectFromSoapMessage(Document httpBody, Class<T> jaxbClass) throws XmlUtilsException {
+	public static <T> T getUnmarshalledObjectFromSoapMessage(Document httpBody, Class<T> jaxbClass) throws InternalBusinessException {
 		T unmarshalledObject = null;
 		try {
 			String namespaceUri = getNamespaceUriFromJaxbClass(jaxbClass);
@@ -52,12 +52,12 @@ public final class XmlUtils {
 			JAXBElement<T> jaxbElement = unmarshallNode(nodeFromSoapMessage, jaxbClass);
 			unmarshalledObject = jaxbElement.getValue();
 		} catch (Exception exception) {
-			throw new XmlUtilsException("Die SoapMessage enthaelt keine Representation des JAXBObjects " + jaxbClass.getSimpleName(), exception);
+			throw new InternalBusinessException("Die SoapMessage enthaelt keine Representation des JAXBObjects " + jaxbClass.getSimpleName(), exception);
 		}
 		return unmarshalledObject;
 	}
 	
-	public static <T> JAXBElement<T> unmarshallNode(Node node, Class<T> jaxbClassName) throws XmlUtilsException {
+	public static <T> JAXBElement<T> unmarshallNode(Node node, Class<T> jaxbClassName) throws InternalBusinessException {
 		Objects.requireNonNull(node);
 		JAXBElement<T> jaxbElement = null;
 		try {
@@ -65,18 +65,18 @@ public final class XmlUtils {
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			jaxbElement = unmarshaller.unmarshal(new DOMSource(node), jaxbClassName);
 		} catch (Exception exception) {
-			throw new XmlUtilsException("Problem beim Unmarshalling der Node in das JAXBElement: " + exception.getMessage(), exception);
+			throw new InternalBusinessException("Problem beim Unmarshalling der Node in das JAXBElement: " + exception.getMessage(), exception);
 		}		
 		return jaxbElement;
 	}	
 	
-	public static <T> String getNamespaceUriFromJaxbClass(Class<T> jaxbClass) throws XmlUtilsException {
+	public static <T> String getNamespaceUriFromJaxbClass(Class<T> jaxbClass) throws InternalBusinessException {
 	    for(Annotation annotation: jaxbClass.getPackage().getAnnotations()){
 	        if(annotation.annotationType() == XmlSchema.class){
 	            return ((XmlSchema)annotation).namespace();
 	        }
 	    }
-	    throw new XmlUtilsException("namespaceUri not found -> Is it really a JAXB-Class, thats used to call the method?");
+	    throw new InternalBusinessException("namespaceUri not found -> Is it really a JAXB-Class, thats used to call the method?");
 	}
 	
 	public static <T> String getXmlTagNameFromJaxbClass(Class<T> jaxbClass) {
@@ -90,73 +90,73 @@ public final class XmlUtils {
 	    return xmlTagName;
 	}
 	
-	public static <T> String getSoapActionFromJaxWsServiceInterface(Class<T> jaxWsServiceInterfaceClass, String jaxWsServiceInvokedMethodName) throws XmlUtilsException {
+	public static <T> String getSoapActionFromJaxWsServiceInterface(Class<T> jaxWsServiceInterfaceClass, String jaxWsServiceInvokedMethodName) throws InternalBusinessException {
 	    Method method = null;
         try {
             method = jaxWsServiceInterfaceClass.getDeclaredMethod(jaxWsServiceInvokedMethodName);
         } catch (Exception exception) {
-            throw new XmlUtilsException("jaxWsServiceInvokedMethodName not found -> Is it really a Method of the JaxWsServiceInterfaceClass?");
+            throw new InternalBusinessException("jaxWsServiceInvokedMethodName not found -> Is it really a Method of the JaxWsServiceInterfaceClass?");
         }       	    
 	    return getSoapActionAnnotationFromMethod(method); 
     }
 	
-	public static <T> String getSoapActionFromJaxWsServiceInterface(Class<T> jaxWsServiceInterfaceClass) throws XmlUtilsException {
+	public static <T> String getSoapActionFromJaxWsServiceInterface(Class<T> jaxWsServiceInterfaceClass) throws InternalBusinessException {
         Method method = null;
         try {
             // Getting any of the Webservice-Methods of the WebserviceInterface to get a valid SoapAction
             method = jaxWsServiceInterfaceClass.getDeclaredMethods()[0];
         } catch (Exception exception) {
-            throw new XmlUtilsException("jaxWsServiceInvokedMethodName not found -> Is it really a Method of the JaxWsServiceInterfaceClass?");
+            throw new InternalBusinessException("jaxWsServiceInvokedMethodName not found -> Is it really a Method of the JaxWsServiceInterfaceClass?");
         }            
         return getSoapActionAnnotationFromMethod(method); 
     }
 
-    private static String getSoapActionAnnotationFromMethod(Method method) throws XmlUtilsException {
+    private static String getSoapActionAnnotationFromMethod(Method method) throws InternalBusinessException {
         for(Annotation annotation: method.getAnnotations()) {
             if(annotation.annotationType() == WebMethod.class) {
                 return ((WebMethod)annotation).action();
             }
         }
-        throw new XmlUtilsException("SoapAction from JaxWsServiceInterface not found");
+        throw new InternalBusinessException("SoapAction from JaxWsServiceInterface not found");
     }
 	
 	
 	
-	public static Document parseFileStream2Document(InputStream contentAsStream) throws XmlUtilsException {
+	public static Document parseFileStream2Document(InputStream contentAsStream) throws InternalBusinessException {
 		Document parsedDoc = null;
 		try {
 	        parsedDoc = setUpDocumentBuilder().parse(contentAsStream);
 		} catch (Exception exception) {
-			throw new XmlUtilsException("Problem beim Parsen des InputStream in ein Document: " + exception.getMessage(), exception);
+			throw new InternalBusinessException("Problem beim Parsen des InputStream in ein Document: " + exception.getMessage(), exception);
 		}
 		return parsedDoc;
 	}
 
-	private static DocumentBuilder setUpDocumentBuilder() throws XmlUtilsException {
+	private static DocumentBuilder setUpDocumentBuilder() throws InternalBusinessException {
 		DocumentBuilder documentBuilder = null;
 		try {
 			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 			documentBuilderFactory.setNamespaceAware(true);
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
 		} catch (ParserConfigurationException parserConfigurationException) {
-			throw new XmlUtilsException("Problem beim Erstellen des DocumentBuilders: " + parserConfigurationException.getMessage(), parserConfigurationException);
+			throw new InternalBusinessException("Problem beim Erstellen des DocumentBuilders: " + parserConfigurationException.getMessage(), parserConfigurationException);
 		}
 		return documentBuilder;
 	}
 	
-	public static Document marhallJaxbElementIntoDocument(Object jaxbElement) throws XmlUtilsException {
+	public static Document marhallJaxbElementIntoDocument(Object jaxbElement) throws InternalBusinessException {
 		Document jaxbDoc = null;
 		try {
 			Marshaller marshaller = setUpMarshaller(jaxbElement.getClass());
 			jaxbDoc = createNewDocument();        	
 			marshaller.marshal(jaxbElement, jaxbDoc);			
 		} catch (Exception exception) {
-			throw new XmlUtilsException("Problem beim marshallen des JAXBElements in ein Document: " + exception.getMessage(), exception);
+			throw new InternalBusinessException("Problem beim marshallen des JAXBElements in ein Document: " + exception.getMessage(), exception);
 		}
         return jaxbDoc;
 	}
 
-	private static Document createNewDocument() throws XmlUtilsException {
+	private static Document createNewDocument() throws InternalBusinessException {
 		return setUpDocumentBuilder().newDocument();
 	}
 
@@ -166,12 +166,12 @@ public final class XmlUtils {
 	}
 	
 	
-	public static Element appendAsChildElement2NewElement(Document document) throws XmlUtilsException {
+	public static Element appendAsChildElement2NewElement(Document document) throws InternalBusinessException {
 		Document docWithDocumentAsChild = copyDocumentAsChildelementUnderNewDocument(document);
 		return docWithDocumentAsChild.getDocumentElement();
 	}
 
-	private static Document copyDocumentAsChildelementUnderNewDocument(Document document) throws XmlUtilsException {
+	private static Document copyDocumentAsChildelementUnderNewDocument(Document document) throws InternalBusinessException {
 		Document docWithDocumentAsChild = createNewDocument();
 		docWithDocumentAsChild.appendChild(docWithDocumentAsChild.createElement("root2kick"));			
 		Node importedNode = docWithDocumentAsChild.importNode(document.getDocumentElement(), true);

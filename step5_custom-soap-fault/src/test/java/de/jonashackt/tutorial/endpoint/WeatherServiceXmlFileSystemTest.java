@@ -20,7 +20,7 @@ import de.codecentric.namespace.weatherservice.general.ForecastReturn;
 import de.codecentric.namespace.weatherservice.general.GetCityForecastByZIP;
 import de.jonashackt.tutorial.SimpleBootCxfSystemTestApplication;
 import de.jonashackt.tutorial.common.XmlUtils;
-import de.jonashackt.tutorial.common.XmlUtilsException;
+import de.jonashackt.tutorial.common.InternalBusinessException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes=SimpleBootCxfSystemTestApplication.class)
@@ -34,7 +34,7 @@ public class WeatherServiceXmlFileSystemTest {
     private Resource getCityForecastByZIPTestXml;
         
     @Test
-    public void getCityForecastByZIP() throws WeatherException, XmlUtilsException, IOException {
+    public void getCityForecastByZIP() throws WeatherException, InternalBusinessException, IOException {
         // Given
         GetCityForecastByZIP getCityForecastByZIP = XmlUtils.readSoapMessageFromStreamAndUnmarshallBody2Object(getCityForecastByZIPTestXml.getInputStream(), GetCityForecastByZIP.class);
         
