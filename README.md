@@ -1,5 +1,5 @@
 # tutorial-soap-spring-boot-cxf
-Tutorial how to create, test, deploy, monitor SOAP-Webservices using [Spring Boot](http://projects.spring.io/spring-boot/), [Apache CXF](https://cxf.apache.org/) and [JAX-WS](https://de.wikipedia.org/wiki/Java_API_for_XML_Web_Services) 
+Tutorial how to create, test, deploy, monitor SOAP-Webservices using [Spring Boot](http://projects.spring.io/spring-boot/), [Apache CXF](https://cxf.apache.org/) and [JAX-WS](https://de.wikipedia.org/wiki/Java_API_for_XML_Web_Services)
 
 Every following step builds upon the preceding one. So if you start e.g. with step 3, you´ll have all of step 1 & 2 covered in the code.
 
@@ -13,7 +13,7 @@ Shows you, how to set up a simple Spring Boot Application and bootstrap a runnab
 
 Inherits a completely altered example WebService-Definition as WSDL inspired from the popular http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL
 
-Shows, how to generate JAXB-Classes from WSDL with JAX-WS Commons Maven plugin at build time - just run 
+Shows, how to generate JAXB-Classes from WSDL with JAX-WS Commons Maven plugin at build time - just run
 ```
 mvn clean generate-sources
 ```
@@ -33,8 +33,8 @@ Full-Contract-First with using the generated JAX-WS Service-Class to not wrap WS
 Unit-, Integration- and Single-System-Integration-Tests with Spring (Boot) and Apache CXF
 
 
-### The Steps 5:
+### The Steps 5: published accompanying the blog-posts: [Spring Boot & Apache CXF – XML validation and custom SOAP faults](https://blog.codecentric.de/en/2016/06/spring-boot-apache-cxf-xml-validation-custom-soap-faults/) (or german version: [Spring Boot & Apache CXF – XML-Validierung und Custom SOAP Faults](https://blog.codecentric.de/2016/06/spring-boot-apache-cxf-xml-validierung-custom-soap-faults/) )
 
 [step5_custom-soap-fault](https://github.com/jonashackt/tutorial-soap-spring-boot-cxf/tree/master/step5_custom-soap-fault)
 
-Custom SOAP faults - e.g. when XML schema validation failes
+Custom SOAP faults after XML schema validation, that are valid against an XSD itself and will be fired, regardles what will enter your endpoint :)
