@@ -60,23 +60,23 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-	        <!-- Generate Java-Classes inkl. JAXB-Bindings from WSDL & imported XSD -->
-	        <!-- See Doku at https://jax-ws-commons.java.net/jaxws-maven-plugin/usage.html -->
+			<!-- Generate Java-Classes inkl. JAXB-Bindings from WSDL & imported XSD -->
+			<!-- See Doku at http://www.mojohaus.org/jaxws-maven-plugin/usage.html -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jaxws-maven-plugin</artifactId>
 				<version>2.4.1</version>
 				<configuration>
-					<!-- See https://jax-ws-commons.java.net/jaxws-maven-plugin/wsimport-mojo.html -->
+					<!-- See http://www.mojohaus.org/jaxws-maven-plugin/wsimport-mojo.html -->
 					<wsdlUrls>
 						<wsdlUrl>src/main/resources/service-api-definition/Weather1.0.wsdl</wsdlUrl>
 					</wsdlUrls>
 					<sourceDestDir>target/generated-sources/wsdlimport/Weather1.0</sourceDestDir>
 					<!-- For accessing the imported schema, see https://netbeans.org/bugzilla/show_bug.cgi?id=241570 -->
 					<vmArgs>
-			            <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
-			        </vmArgs>
-			    </configuration>
+						<vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+					</vmArgs>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
