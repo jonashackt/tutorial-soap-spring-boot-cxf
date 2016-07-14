@@ -15,6 +15,7 @@
 		<module>step3_jaxws-endpoint-cxf-spring-boot-orig-wsdl</module>
 		<module>step4_test</module>
 		<module>step5_custom-soap-fault</module>
+		<module>step6_soap_message_logging</module>
 	</modules>
 
 </project>
