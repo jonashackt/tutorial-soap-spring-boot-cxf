@@ -1,10 +1,14 @@
 package de.jonashackt.tutorial.configuration;
 
+import javax.swing.*;
 import javax.xml.ws.Endpoint;
 
+import de.jonashackt.tutorial.soapmsglogging.LoggingInInterceptorXmlOnly;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.feature.LoggingFeature;
+import org.apache.cxf.interceptor.AbstractLoggingInterceptor;
+import org.apache.cxf.interceptor.LoggingInInterceptor;
 import org.apache.cxf.jaxws.EndpointImpl;
 import org.apache.cxf.transport.servlet.CXFServlet;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
@@ -28,7 +32,10 @@ public class WebServiceConfiguration {
 
     @Bean(name = Bus.DEFAULT_BUS_ID)
     public SpringBus springBus() {
-        return new SpringBus();
+        SpringBus springBus = new SpringBus();
+        springBus.getInInterceptors().add(logInInterceptor());
+        springBus.getInFaultInterceptors().add(logInInterceptor());
+        return springBus;
     }    
     
     @Bean
@@ -46,12 +53,6 @@ public class WebServiceConfiguration {
         endpoint.setServiceName(weather().getServiceName());
         endpoint.setWsdlLocation(weather().getWSDLDocumentLocation().toString());
         endpoint.publish(SERVICE_URL);
-
-        LoggingFeature logFeature = new LoggingFeature();
-        logFeature.setPrettyLogging(true);
-        logFeature.initialize(springBus());
-        endpoint.getFeatures().add(logFeature);
-
         return endpoint;
     }
     
@@ -59,5 +60,12 @@ public class WebServiceConfiguration {
     public Weather weather() {
         // Needed for correct ServiceName & WSDLLocation to publish contract first incl. original WSDL
         return new Weather();
+    }
+
+    @Bean
+    public AbstractLoggingInterceptor logInInterceptor() {
+        LoggingInInterceptor logInInterceptor = new LoggingInInterceptorXmlOnly();
+        // The In-Messages are pretty without setting it, when setting it Apache CXF throws empty lines into the In-Messages
+        return logInInterceptor;
     }
 }
