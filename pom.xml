@@ -16,6 +16,7 @@
 		<module>step4_test</module>
 		<module>step5_custom-soap-fault</module>
 		<module>step6_soap_message_logging</module>
+		<module>step7_soap_message_logging_payload_only</module>
 	</modules>
 
 </project>
