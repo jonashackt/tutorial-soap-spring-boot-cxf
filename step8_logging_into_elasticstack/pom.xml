@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.jonashackt.tutorial</groupId>
-	<artifactId>step7_soap_message_logging_payload_only</artifactId>
+	<artifactId>step8_logging_into_elasticstack</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 

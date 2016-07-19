@@ -17,6 +17,7 @@
 		<module>step5_custom-soap-fault</module>
 		<module>step6_soap_message_logging</module>
 		<module>step7_soap_message_logging_payload_only</module>
+        <module>step8_logging_into_elasticstack</module>
 	</modules>
 
 </project>

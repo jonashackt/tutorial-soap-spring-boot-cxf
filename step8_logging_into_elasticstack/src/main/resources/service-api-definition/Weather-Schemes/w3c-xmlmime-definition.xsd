@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- W3C XML Schema defined in the Describing Media Content of Binary Data in XML specification,
+     see http://www.w3.org/TR/xml-media-types
+     Copyright © 2005 World Wide Web Consortium -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
+           targetNamespace="http://www.w3.org/2005/05/xmlmime">
+
+  <xs:attribute name="contentType">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+      <xs:minLength value="3"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+
+  <xs:attribute name="expectedContentTypes" type="xs:string"/>
+
+  <xs:complexType name="base64Binary">
+    <xs:simpleContent>
+        <xs:extension base="xs:base64Binary">
+            <xs:attribute ref="xmime:contentType"/>
+        </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="hexBinary">
+    <xs:simpleContent>
+        <xs:extension base="xs:hexBinary">
+            <xs:attribute ref="xmime:contentType"/>
+        </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+</xs:schema>
