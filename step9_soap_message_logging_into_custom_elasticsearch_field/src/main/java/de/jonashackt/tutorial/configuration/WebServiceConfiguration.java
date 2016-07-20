@@ -3,8 +3,8 @@ package de.jonashackt.tutorial.configuration;
 import de.codecentric.namespace.weatherservice.Weather;
 import de.codecentric.namespace.weatherservice.WeatherService;
 import de.jonashackt.tutorial.endpoint.WeatherServiceEndpoint;
-import de.jonashackt.tutorial.soapmsglogging.LoggingInInterceptorXmlOnly;
-import de.jonashackt.tutorial.soapmsglogging.LoggingOutInterceptorXmlOnly;
+import de.jonashackt.tutorial.soapmsglogging.LoggingInInterceptorXmlAndMdcExtraction;
+import de.jonashackt.tutorial.soapmsglogging.LoggingOutInterceptorXmlAndMdcExtraction;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.interceptor.AbstractLoggingInterceptor;
@@ -65,14 +65,14 @@ public class WebServiceConfiguration {
 
     @Bean
     public AbstractLoggingInterceptor logInInterceptor() {
-        LoggingInInterceptor logInInterceptor = new LoggingInInterceptorXmlOnly();
+        LoggingInInterceptor logInInterceptor = new LoggingInInterceptorXmlAndMdcExtraction();
         logInInterceptor.setPrettyLogging(true);
         return logInInterceptor;
     }
 
     @Bean
     public AbstractLoggingInterceptor logOutInterceptor() {
-        LoggingOutInterceptor logOutInterceptor = new LoggingOutInterceptorXmlOnly();
+        LoggingOutInterceptor logOutInterceptor = new LoggingOutInterceptorXmlAndMdcExtraction();
         logOutInterceptor.setPrettyLogging(true);
         return logOutInterceptor;
     }
