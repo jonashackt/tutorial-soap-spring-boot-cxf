@@ -1,10 +1,11 @@
 package de.jonashackt.tutorial.controller;
 
-import org.springframework.stereotype.Component;
-
 import de.codecentric.namespace.weatherservice.general.ForecastRequest;
 import de.codecentric.namespace.weatherservice.general.ForecastReturn;
 import de.jonashackt.tutorial.transformation.GetCityForecastByZIPOutMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 /*
  *  Example-Controller:
@@ -15,12 +16,26 @@ import de.jonashackt.tutorial.transformation.GetCityForecastByZIPOutMapper;
  */ 
 @Component
 public class WeatherServiceController {
- 
+
+    private static final Logger LOG = LoggerFactory.getLogger(WeatherServiceController.class);
+
     public ForecastReturn getCityForecastByZIP(ForecastRequest forecastRequest) {
-	    /*
+        /*
 	     * We leave out inbound transformation, plausibility-checking, logging, backend-calls e.g.
 	     * for the moment
+	     *
+	     * Just some Log-Statements here :)
 	     */
+        LOG.info("Starting inbound transformation into internal datamodel");
+
+        LOG.info("Checking plausibility of data");
+
+        LOG.info("Calling Backend No. 1");
+
+        LOG.info("Calling Backend No. 2");
+
+        LOG.info("Starting outbound transformation into external datamodel");
+
         return GetCityForecastByZIPOutMapper.mapGeneralOutlook2Forecast();
 	}
 	

@@ -6,12 +6,11 @@
     <logger name="org.apache.cxf" level="INFO"/>
 
     <!-- Logstash-Configuration -->
-    <!-- For details see https://github.com/logstash/logstash-logback-encoder/tree/logstash-logback-encoder-4.5 -->
+    <!-- For details see https://github.com/logstash/logstash-logback-encoder -->
     <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <destination>192.168.99.100:5000</destination>
         <!-- encoder is required -->
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
-            <includeCallerData>true</includeCallerData>
             <customFields>{"service_name":"WeatherService 1.0"}</customFields>
             <fieldNames>
                 <message>log-msg</message>
