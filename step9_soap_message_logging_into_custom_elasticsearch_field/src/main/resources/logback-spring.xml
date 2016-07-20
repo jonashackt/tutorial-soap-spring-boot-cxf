@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="de.jonashackt.tutorial" level="DEBUG"/>
+    <logger name="org.apache.cxf" level="INFO"/>
+
+    <!-- Logstash-Configuration -->
+    <!-- For details see https://github.com/logstash/logstash-logback-encoder -->
+    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>192.168.99.100:5000</destination>
+        <!-- encoder is required -->
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"service_name":"WeatherService 1.0"}</customFields>
+            <fieldNames>
+                <message>log_msg</message>
+            </fieldNames>
+        </encoder>
+        <keepAliveDuration>5 minutes</keepAliveDuration>
+    </appender>
+	
+	<root level="INFO">
+        <appender-ref ref="logstash" />
+	</root>
+</configuration>
