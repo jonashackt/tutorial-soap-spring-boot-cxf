@@ -38,3 +38,26 @@ Unit-, Integration- and Single-System-Integration-Tests with Spring (Boot) and A
 [step5_custom-soap-fault](https://github.com/jonashackt/tutorial-soap-spring-boot-cxf/tree/master/step5_custom-soap-fault)
 
 Custom SOAP faults after XML schema validation, that are valid against an XSD itself and will be fired, regardles what will enter your endpoint :)
+
+### The Steps 6-9: published accompanying the blog-posts: [Spring Boot & Apache CXF – tbd](https://blog.codecentric.de/en/) (or german version: [Spring Boot & Apache CXF – tdb](https://blog.codecentric.de/) )
+
+[step6_soap_message_logging](https://github.com/jonashackt/tutorial-soap-spring-boot-cxf/tree/master/step6_soap_message_logging)
+
+How to configure SOAP message logging on Apache CXF endpoints
+
+
+[step7_soap_message_logging_payload_only](https://github.com/jonashackt/tutorial-soap-spring-boot-cxf/tree/master/step7_soap_message_logging_payload_only)
+
+Tailor Apache CXF´s SOAP message log statements<
+
+
+[step8_logging_into_elasticstack](https://github.com/jonashackt/tutorial-soap-spring-boot-cxf/tree/master/step8_logging_into_elasticstack)
+
+Elasticsearch, Logstash, Kibana - How to log SOAP messages in 2016, including:
+
+* Configuring the logstash-logback-encoder
+
+[step9_soap_message_logging_into_custom_elasticsearch_field](https://github.com/jonashackt/tutorial-soap-spring-boot-cxf/tree/master/step9_soap_message_logging_into_custom_elasticsearch_field)
+
+* Logging SOAP messages into their own Elasticsearch fields
+* Correlating all Log-Events concerning a specific SOAP request
