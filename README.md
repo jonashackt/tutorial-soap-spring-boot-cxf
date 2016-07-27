@@ -39,7 +39,7 @@ Unit-, Integration- and Single-System-Integration-Tests with Spring (Boot) and A
 
 Custom SOAP faults after XML schema validation, that are valid against an XSD itself and will be fired, regardles what will enter your endpoint :)
 
-### The Steps 6-9: published accompanying the blog-posts: [Spring Boot & Apache CXF – tbd](https://blog.codecentric.de/en/) (or german version: [Spring Boot & Apache CXF – tdb](https://blog.codecentric.de/) )
+### The Steps 6-9: published accompanying the blog-posts: [Spring Boot & Apache CXF – Logging & Monitoring with Logback, Elasticsearch, Logstash & Kibana](https://blog.codecentric.de/en/2016/07/spring-boot-apache-cxf-logging-monitoring-logback-elasticsearch-logstash-kibana/) (or german version: [Spring Boot & Apache CXF – Logging & Monitoring mit Logback, Elasticsearch, Logstash & Kibana](https://blog.codecentric.de/2016/07/spring-boot-apache-cxf-logging-monitoring-logback-elasticsearch-logstash-kibana/) )
 
 [step6_soap_message_logging](https://github.com/jonashackt/tutorial-soap-spring-boot-cxf/tree/master/step6_soap_message_logging)
 
