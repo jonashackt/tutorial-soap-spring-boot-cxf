@@ -32,6 +32,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>cxf-spring-boot-starter</artifactId>
+			<version>1.0.7.RELEASE</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -44,8 +50,19 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>de.codecentric</groupId>
+				<artifactId>cxf-spring-boot-starter-maven-plugin</artifactId>
+				<version>1.0.7.RELEASE</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
