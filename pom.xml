@@ -19,6 +19,7 @@
 		<module>step7_soap_message_logging_payload_only</module>
         <module>step8_logging_into_elasticstack</module>
         <module>step9_soap_message_logging_into_custom_elasticsearch_field</module>
+        <module>step10_simple_app_with_cxf-spring-boot-starter</module>
 	</modules>
 
 </project>
