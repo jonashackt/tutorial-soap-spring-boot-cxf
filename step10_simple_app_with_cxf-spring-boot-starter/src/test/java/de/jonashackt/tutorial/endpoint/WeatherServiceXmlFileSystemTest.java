@@ -6,6 +6,7 @@ import de.codecentric.namespace.weatherservice.WeatherException;
 import de.codecentric.namespace.weatherservice.WeatherService;
 import de.codecentric.namespace.weatherservice.general.ForecastReturn;
 import de.codecentric.namespace.weatherservice.general.GetCityForecastByZIP;
+import de.jonashackt.tutorial.SimpleBootCxfSystemTestApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

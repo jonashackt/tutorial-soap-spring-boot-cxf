@@ -6,24 +6,30 @@ import de.codecentric.namespace.weatherservice.general.ForecastRequest;
 import de.codecentric.namespace.weatherservice.general.ForecastReturn;
 import de.codecentric.namespace.weatherservice.general.WeatherInformationReturn;
 import de.codecentric.namespace.weatherservice.general.WeatherReturn;
+import de.jonashackt.tutorial.controller.WeatherServiceController;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 public class WeatherServiceEndpoint implements WeatherService {
 
+    @Autowired
+    private WeatherServiceController weatherServiceController;
+    
     @Override
     public ForecastReturn getCityForecastByZIP(ForecastRequest forecastRequest) throws WeatherException {
-        // TODO Auto-generated method stub
-        return null;
+        return weatherServiceController.getCityForecastByZIP(forecastRequest);
     }
     
     @Override
-    public WeatherInformationReturn getWeatherInformation(String zip) throws WeatherException {
+    public WeatherInformationReturn getWeatherInformation(String zip)
+            throws WeatherException {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public WeatherReturn getCityWeatherByZIP(ForecastRequest forecastRequest) throws WeatherException {
+    public WeatherReturn getCityWeatherByZIP(ForecastRequest forecastRequest)
+            throws WeatherException {
         // TODO Auto-generated method stub
         return null;
     }
