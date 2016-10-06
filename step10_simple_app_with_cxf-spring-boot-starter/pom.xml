@@ -19,6 +19,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<!-- Overriding SpringBoot 1.3.4ff´s logback 1.1.7, because of http://jira.qos.ch/browse/LOGBACK-1164 which
+            is only fixed in the unreleased 1.1.8  -->
+		<logback.version>1.1.6</logback.version>
 	</properties>
 
 	<dependencies>
