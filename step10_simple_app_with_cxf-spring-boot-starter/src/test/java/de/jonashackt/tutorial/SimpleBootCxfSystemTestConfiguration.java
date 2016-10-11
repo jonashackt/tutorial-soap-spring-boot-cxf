@@ -30,6 +30,9 @@ public class SimpleBootCxfSystemTestConfiguration {
     }
 
     private String buildUrl() {
-        return "http://localhost:8087" + cxfAutoConfiguration.getBaseUrl() + SimpleBootCxfConfiguration.SERVICE_URL;
+        // return something like http://localhost:8084/soap-api/WeatherSoapService
+        return "http://localhost:8087"
+                + cxfAutoConfiguration.getBaseUrl()
+                + SimpleBootCxfConfiguration.SERVICE_URL;
     }
 }
