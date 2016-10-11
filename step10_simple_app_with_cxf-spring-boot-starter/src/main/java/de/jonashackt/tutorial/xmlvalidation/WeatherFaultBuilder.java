@@ -24,7 +24,7 @@ public class WeatherFaultBuilder implements CustomFaultBuilder {
 	}
 
     @Override
-    public String createCustomFaultMessage(FaultType arg0) {
+    public String createCustomFaultMessage(FaultType faultType) {
         return CUSTOM_ERROR_MSG;
     }
 }
