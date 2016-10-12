@@ -63,7 +63,7 @@ Elasticsearch, Logstash, Kibana - How to log SOAP messages in 2016, including:
 * Correlating all Log-Events concerning a specific SOAP request
 
 
-### The Steps 10: published accompanying the blog-posts: [Spring Boot & Apache CXF – tba](https://blog.codecentric.de/en/2016/tba) (or german version: [Spring Boot & Apache CXF – tba](https://blog.codecentric.de/2016/tba) )
+### The Steps 10: published accompanying the blog-posts: [Spring Boot & Apache CXF – SOAP on steroids fueled by cxf-spring-boot-starter](https://blog.codecentric.de/en/2016/10/spring-boot-apache-cxf-spring-boot-starter/) (or german version: [Spring Boot & Apache CXF – Von 0 auf SOAP mit dem cxf-spring-boot-starter](https://blog.codecentric.de/2016/10/spring-boot-apache-cxf-spring-boot-starter/) )
 
 [step10_simple_app_with_cxf-spring-boot-starter](https://github.com/jonashackt/tutorial-soap-spring-boot-cxf/tree/master/step10_simple_app_with_cxf-spring-boot-starter)
 
