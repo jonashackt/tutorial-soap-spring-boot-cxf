@@ -17,7 +17,7 @@ import de.jonashackt.tutorial.endpoint.WeatherServiceEndpoint;
 public class WebServiceConfiguration {
 	
     @Bean
-    public ServletRegistrationBean dispatcherServlet() {
+    public ServletRegistrationBean cxfServlet() {
         return new ServletRegistrationBean(new CXFServlet(), "/soap-api/*");
     }
 

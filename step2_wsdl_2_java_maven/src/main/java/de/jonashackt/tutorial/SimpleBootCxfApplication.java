@@ -16,7 +16,7 @@ public class SimpleBootCxfApplication {
     }
 
     @Bean
-    public ServletRegistrationBean dispatcherServlet() {
+    public ServletRegistrationBean cxfServlet() {
         return new ServletRegistrationBean(new CXFServlet(), "/soap-api/*");
     }
 
