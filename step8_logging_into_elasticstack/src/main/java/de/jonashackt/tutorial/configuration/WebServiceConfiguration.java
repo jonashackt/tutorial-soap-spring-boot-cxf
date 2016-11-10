@@ -25,7 +25,7 @@ public class WebServiceConfiguration {
     public static final String SERVICE_URL = "/WeatherSoapService_1.0";
     
     @Bean
-    public ServletRegistrationBean dispatcherServlet() {
+    public ServletRegistrationBean cxfServlet() {
         return new ServletRegistrationBean(new CXFServlet(), BASE_URL + "/*");
     }
 
