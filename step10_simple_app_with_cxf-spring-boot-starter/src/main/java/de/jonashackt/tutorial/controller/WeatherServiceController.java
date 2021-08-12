@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  *  So it decouples the WSDL-generated Classes from the internal Classes - for when the former changes,
  *  nothing or only the mapping has to be changed
  */ 
-@Component
+@Controller
 public class WeatherServiceController {
  
     public ForecastReturn getCityForecastByZIP(ForecastRequest forecastRequest) {
